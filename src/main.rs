@@ -98,7 +98,8 @@ async fn download_repos(target: String, is_org: bool, threads: usize, recursive:
             cmd.arg("clone")
                 .arg(clone_url)
                 .arg(&name)
-                .stdout(Stdio::null());
+                .stdout(Stdio::null())
+                .stderr(Stdio::null()); // Redirect stderr to null as well
             if recursive {
                 cmd.arg("--recursive");
             }
